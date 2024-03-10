@@ -5,12 +5,12 @@ public class Pitcher extends Player {
 	String role; // Pitcher Role: Starter or Reliever
 	
 	// Constructor calls Player constructor and adds role information
-	Pitcher(String Name, String Address, String Phone, char Bats, char Throws, 
-			int Years, char Role){
+	Pitcher(String FirstName, String LastName, String Address, String Phone, char battingHand, char throwingHand, 
+			int Number, char PitchType){
 		
-		super(Name, Address, Phone, Bats, Throws, Years);
+		super(FirstName, LastName, Address, Phone, battingHand, throwingHand, Number); // Fix: Remove PitchType parameter
 		
-		if (Role == 's' || Role == 'S')
+		if (PitchType == 's' || PitchType == 'S')
 			role = STARTER;
 		else
 			role = RELIEVER;
@@ -24,11 +24,11 @@ public class Pitcher extends Player {
 		return result;
 	}
 	
-	// Method updates the Player's year and asks user if role has changed; 
+	// Method asks user if role has changed; 
 	// if so, it switches to the opposite role.
 	public void update () {
 		super.update();
-		System.out.print("\nHas " + name + "'s role changed? (Y or N) ");
+		System.out.print("\nHas " + firstName + "'s role changed? (Y or N) ");
 		
 		// Take user input from main's Scanner, to check for change 'y' or 'Y'
 		char change = Team.input.next().charAt(0);

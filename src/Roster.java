@@ -1,28 +1,63 @@
-
+import java.util.Scanner;
 public class Roster {
+	int numPlayers = 0;
     private Player [] teamRoster;  // variable of array of Players 
 	
 	// Constructor creates 7 Player references with appropriate constructors depending on
 	// positions (Pitcher, FieldPosition, Minor League)
 	Roster () {
-		teamRoster = new Player[7];  // Creates a reference array of 7 players
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Please enter the number of players on the team: ");
+		numPlayers = scanner.nextInt();
+		scanner.nextLine(); // Consumes new line leftover
+
+		teamRoster = new Player[numPlayers];  // Creates a reference array of 7 players
 		
 		// Each team member is added to the array, though each one is a Player, they
 		// each are created using their appropriate subclass
-		teamRoster[0] = new Pitcher("Sam Green", "101 N. State St. Chicago, IL 60608", 
-                                "317-555-0018", 'R', 'r', 5, 's');
-		teamRoster[1] = new Pitcher("Allen Stanley", "1908 E. Polk St. Chicago, IL 60607", 
-                                "317-555-9822", 'l', 'L', 1, 'r');
-		teamRoster[2] = new FieldPosition("Robert Gilbert", "2208 E. Taylor St. Chicago, IL 60601", 
-                                "317-555-2557", 'R', 'R', 4, "Shortstop");
-		teamRoster[3] = new FieldPosition("John Stacey", "880 S. Main St. Peotone, IL 60612", 
-                                "308-555-9948", 'R', 'L', 7, "Second Base");
-		teamRoster[4] = new FieldPosition("William Anderson", "20114 Baughman Ct. South Bend, IN 46614", 
-                                "317-555-0295", 'R', 'R', 2, "Astros");
-		teamRoster[5] = new FieldPosition("Greg Fulright", "102 W. Gorham St. Madison WI, 53703", 
-                                "209-555-2252", 'L', 'L', 1, "Outfield");
-		teamRoster[6] = new FieldPosition("Guy Taylor", "12 W. Bueno St. Makebelieve, IN 46612", 
-										"317-555-5422", 'R', 'R', 3, "Sox");
+		for (int i =0; i < numPlayers; i++){
+			System.out.println("Enter player type (1 for Pitcher or 2 for Fielder)");
+			int playerType = scanner.nextInt();
+			scanner.nextLine();
+
+			System.out.println("Enter player first name: ");
+			String firstName = scanner.nextLine();
+			
+			System.out.println("Enter player last name: ");
+			String lastName = scanner.nextLine();
+
+			System.out.println("Enter player address: ");
+			String address = scanner.nextLine();
+
+			System.out.println("Enter player phone number: ");
+			String phone = scanner.nextLine();
+
+			System.out.println("Enter player batting hand (L/R): ");
+			String battingHand = scanner.next();
+			char bats = battingHand.charAt(0);
+
+			System.out.println("Enter player throwing hand (L/R): ");
+			String throwingHand = scanner.nextLine();
+			char throwHand = throwingHand.charAt(0);
+
+			System.out.println("Enter player number: ");
+			int number = scanner.nextInt();
+			scanner.nextLine();
+
+			if (playerType == 1) {
+				System.out.println("Enter pitcher type Starter/Reliever (S/R): ");
+				char pitchType = scanner.nextLine().charAt(0);
+				teamRoster[i] = new Pitcher(firstName, lastName, address, phone, bats, 
+				throwHand, number, pitchType);
+			} else if (playerType == 2){
+				System.out.println("Enter player position: ");
+				String position = scanner.nextLine();
+				teamRoster[i] = new FieldPosition(firstName, lastName, address, phone, bats, throwHand, number, position);
+			} else {
+				System.out.println("Invalid player type:");
+				i--; //Decrement i to retry the loop.
+			}
+		}
 	}
 	
 	// teamUpdate method, updates each team member with the update method from their
@@ -30,7 +65,7 @@ public class Roster {
 	public void teamUpdate(){
 		
 		// Prints and updates each player in array
-		for (int i = 0; i < 7; i++){
+		for (int i = 0; i < numPlayers; i++){
 			System.out.println(this.teamRoster[i]); // Print Record
 			this.teamRoster[i].update(); // Update Record
 		}

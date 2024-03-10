@@ -2,9 +2,9 @@ public class FieldPosition extends Player{
 String fieldingPosition;
 
 	// Constructor calls Player constructor and adds fieldingPosition
-	public FieldPosition(java.lang.String Name, java.lang.String Address, java.lang.String Phone, char Bats,
-	char Throws, int Years, java.lang.String fieldingPosition) {		
-		super(Name, Address, Phone, Bats, Throws, Years);
+	public FieldPosition(String FirstName, String LastName, String Address, String Phone, char BattingHand,
+	char ThrowingHand, int Number, String fieldingPosition) {		
+		super(FirstName, LastName, Address, Phone, BattingHand, ThrowingHand, Number);
 		this.fieldingPosition = fieldingPosition;
 	}
 
@@ -20,7 +20,7 @@ String fieldingPosition;
 	// if so, it asks for the new position, taking it as input.
 	public void update () {
 		super.update();
-		System.out.print("\nHas " + name + "'s position changed? (Y or N) ");
+		System.out.print("\nHas " + firstName + "'s position changed? (Y or N) ");
 		
 		// Take user input from main's Scanner, to check for change 'y' or 'Y'
 		char change = Team.input.next().charAt(0);
