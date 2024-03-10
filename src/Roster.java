@@ -32,13 +32,12 @@ public class Roster {
 			System.out.println("Enter player phone number: ");
 			String phone = scanner.nextLine();
 
-			System.out.println("Enter player batting hand (L/R): ");
-			String battingHand = scanner.next().toUpperCase();
-			char bats = battingHand.charAt(0);
+			System.out.println("Enter player batting hand (Left/Right): ");
+			char bats= scanner.nextLine().charAt(0);
 
-			System.out.println("Enter player throwing hand (L/R): ");
-			String throwingHand = scanner.nextLine().toUpperCase();
-			char throwHand = throwingHand.charAt(0);
+			System.out.println("Enter player throwing hand (Left/Right): ");
+			char throwHand = scanner.nextLine().charAt(0);
+
 
 			System.out.println("Enter player number: ");
 			int number = scanner.nextInt();
@@ -57,10 +56,10 @@ public class Roster {
 				System.out.println("Invalid player type:");
 				i--; //Decrement i to retry the loop.
 			}
-		scanner.close();
 		}
+		scanner.close();
 	}
-	
+
 	// teamUpdate method, updates each team member with the update method from their
 	// creation class
 	public void teamUpdate(){
