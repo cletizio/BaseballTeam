@@ -33,11 +33,11 @@ public class Roster {
 			String phone = scanner.nextLine();
 
 			System.out.println("Enter player batting hand (L/R): ");
-			String battingHand = scanner.next();
+			String battingHand = scanner.next().toUpperCase();
 			char bats = battingHand.charAt(0);
 
 			System.out.println("Enter player throwing hand (L/R): ");
-			String throwingHand = scanner.nextLine();
+			String throwingHand = scanner.nextLine().toUpperCase();
 			char throwHand = throwingHand.charAt(0);
 
 			System.out.println("Enter player number: ");
@@ -57,6 +57,7 @@ public class Roster {
 				System.out.println("Invalid player type:");
 				i--; //Decrement i to retry the loop.
 			}
+		scanner.close();
 		}
 	}
 	
