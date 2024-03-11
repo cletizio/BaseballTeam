@@ -35,7 +35,7 @@ public class Pitcher extends Player {
 		
 		// If change in role, alter to opposite role 
 		if ((change == 'y') || (change == 'Y')){
-			if (role == STARTER) // if starter, make reliever
+			if (role.equals(STARTER)) // if starter, make reliever
 				role = RELIEVER;
 			else
 				role = STARTER; // else if reliever, make starter

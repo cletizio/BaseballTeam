@@ -24,7 +24,7 @@ public class Player {
 
     // Programmer defined toString method that outputs player record as string
     public String toString() {
-        return(firstName + "\n\t" + number + "/n/t" + address +"\n\t" + phoneNumber + "\n\tBats: " + bats + 
+        return(firstName + "\n\t" + number + "\n\t" + address +"\n\t" + phoneNumber + "\n\tBats: " + bats +
                 "\tThrows: " + throwingArm);
     }
 
